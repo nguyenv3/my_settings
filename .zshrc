@@ -4,4 +4,4 @@ plugins=(wd git zsh-syntax-highlighting)
 unsetopt inc_append_history
 unsetopt share_history
 # Open the current git direcetory's gitlab thingy.
-alias gl="open \`git remote -v | grep fetch | cut -f2 | cut -d' ' -f1 | sed -e's/git@/http:\/\//' -e's/\.git$//' | sed -E 's/(\/\/[^:]*):/\1\//'\`"
+alias gl="open \`echo "https://$(git remote -v | grep fetch | sed -n 's/.*git@\(.*\)\.git.*/\1/p' | sed 's/:/\//g')"\`"
